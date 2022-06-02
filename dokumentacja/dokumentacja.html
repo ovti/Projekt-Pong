@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dokumentacja Pong</title>
+    <style>
+      body {
+        font-size: 120%;
+      }
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <h1>PONG</h1>
+      <b>
+        Reedycja klasycznej gry Pong wydanej w 1972 roku na Atari. Nowa wersja
+        gry została napisana przy wykorzystaniu języka C oraz biblioteki Allegro
+        5. Rozgrywka polega na odbijaniu piłki i osiągnięciu wyższego wyniku od
+        przeciwnika.</b
+      >
+    </center>
+
+    <h2>Funkcje i szybki tutorial:</h2>
+
+    <ul>
+      <li><h3>Pierwsze uruchomienie</h3></li>
+
+      <ul>
+        <li>
+          Po uruchomieniu gry użytkownik ma możliwość ustawienia maksymalnego
+          wyniku (3, 6 lub 9 punktów wymaganych do zwycięstwa), dostosowania
+          koloru paletek obu graczy (do wyboru fioletowy, biały, czerwony,
+          pomarańczowy, zielony oraz niebieski), a także koloru tła (tutaj wybór
+          między czarnym, szarym, fioletowym lub niebieskim). Wybrane przez
+          użytkownika ustawienia zostaną zapisane i wczytane przy ponownym
+          uruchomieniu.
+        </li>
+      </ul>
+
+      <br />
+      <img src="img/1.png" />
+
+      <li><h3>Początek gry</h3></li>
+      <ul>
+        <li>
+          Po zatwierdzeniu ustawień klawiszem ENTER gra przejdzie do głównego
+          ekranu gry. Rozgrywka rozpoczne się, gdy któryś z graczy wykona ruch.
+          Gracz może swobodnie przełączać między grą z drugim graczem na tej
+          samej klawiaturze, bądź z komputerem za pomocą klawisza SPACE.
+        </li>
+      </ul>
+      <br />
+      <img src="img/2.png" />
+
+      <li><h3>Rozgrywka</h3></li>
+      <ul>
+        <li>
+          Rozgrywka polega na odbijaniu piłki i zdobywaniu punktów. Piłka odbija
+          się od paletek graczy i ścianek górnych i dolnych. Jeżeli piłka
+          wpadnie za paletkę gracza, to przeciwnik zdobywa punkt. Po osiągnięciu
+          określonego progu punktów wybranego na początku rozgrywki gra
+          wyświetli informację o zwycięzcy i zapisze datę i wynik rozgrywki w
+          lokalizacji /files/scores.txt.
+        </li>
+      </ul>
+      <br />
+      <img src="img/3.png" />
+    </ul>
+
+    <h2>Sterowanie:</h2>
+
+    <ul>
+      <li>
+        <b>Ogólne:<br /></b>
+      </li>
+      <ul>
+        <li>3/6/9 - zmiana maksymalnego wyniku</li>
+        <li>←/→ - zmiana koloru Player 1</li>
+        <li>A/D - zmiana koloru Player 2</li>
+        <li>Q/E - zmiana koloru tła</li>
+        <li>SPACE - przełącza między grą z komputerem/drugim graczem</li>
+        <li>R - restartuje rozgrywkę</li>
+        <li>ESC - wyjście z gry/powrót do ustawień</li>
+      </ul>
+      <li>
+        <b>Player 1:<br /></b>
+      </li>
+      <ul>
+        <li>←/→ - ruch Góra/Dół</li>
+      </ul>
+      <li>
+        <b>Player 2:<br /></b>
+      </li>
+      <ul>
+        <li>A/D - ruch Góra/Dół</li>
+      </ul>
+    </ul>
+
+    <h2>Kompilacja:</h2>
+    <p>Gra była tworzona i testowana na systemie Windows 11.<br /><br /></p>
+
+    Do skompilowania pliku gry game.c wymagana jest biblioteka Allegro 5 (w
+    przypadku systemu Windows najłatwiej ją zainstalować za pomocą NuGet
+    bezpośrednio w Visual Studio bądź za pomocą MinGW w MSYS2). <br /><br />
+
+    <a href="https://github.com/liballeg/allegro_wiki/wiki/Quickstart"
+      >Link do oficjalnej wiki biblioteki Allegro 5</a
+    ><br /><br />
+
+    <b>Polecenie dla systemu Windows: <br /></b>
+    gcc game.c -o game.exe -lallegro -lallegro_font -lallegro_ttf
+    -lallegro_primitives -lallegro_audio -lallegro_acodec<br /><br />
+
+    <b>Linux:<br /></b>
+    gcc game.c -o game $(pkg-config allegro-5 allegro_font-5
+    allegro_primitives-5 allegro_audio-5 allegro_acodec-5 --libs --cflags)<br /><br />
+
+    Jeżeli po kompilacji występują problemy z uruchomieniem gry, upewnij się, że
+    w lokalizacji pliku znajdują się foldery: files, font i sounds zawierające
+    kolejno pliki scores.txt, settings.txt w files, font.ttf w font oraz
+    paddle.wav, score.wav, wall.wav w sounds.
+  </body>
+</html>
